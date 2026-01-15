@@ -1,11 +1,13 @@
-Amazon S3
+# Amazon S3 Pricing
+Service: S3
+Doc: Pricing
+
 Object storage built to retrieve any amount of data from anywhere
 
-Sign up
 Pay only for what you use. There is no minimum charge. Amazon S3 cost components are storage pricing, request and data retrieval pricing, data transfer and transfer acceleration pricing, data management and insights feature pricing, replication pricing, and transform and query feature pricing.
 
-Storage pricing
-You pay for storing objects in your S3 buckets. The rate you’re charged depends on your objects' size, how long you stored the objects during the month, and the storage class—S3 Standard, S3 Intelligent-Tiering, S3 Standard-Infrequent Access, S3 One Zone-Infrequent Access, S3 Express One Zone, S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval (Formerly S3 Glacier), and S3 Glacier Deep Archive. You pay a monthly monitoring and automation charge per object stored in the S3 Intelligent-Tiering storage class to monitor access patterns and move objects between access tiers. In S3 Intelligent-Tiering there are no retrieval charges, and no additional tiering charges apply when objects are moved between access tiers.
+## Storage pricing
+You pay for storing objects in your S3 buckets. The rate you're charged depends on your objects' size, how long you stored the objects during the month, and the storage class-S3 Standard, S3 Intelligent-Tiering, S3 Standard-Infrequent Access, S3 One Zone-Infrequent Access, S3 Express One Zone, S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval (Formerly S3 Glacier), and S3 Glacier Deep Archive. You pay a monthly monitoring and automation charge per object stored in the S3 Intelligent-Tiering storage class to monitor access patterns and move objects between access tiers. In S3 Intelligent-Tiering there are no retrieval charges, and no additional tiering charges apply when objects are moved between access tiers.
 
 There are per-request ingest charges when using PUT, COPY, or lifecycle rules to move data into any S3 storage class. Consider the ingest or transition cost before moving objects into any storage class. Estimate your costs using the AWS Pricing Calculator. To find the best S3 storage class for your workload, learn more here.
 
@@ -15,7 +17,7 @@ Region:
 
 Middle East (UAE)
 
-Storage pricing
+## Storage pricing
 S3 Standard - General purpose storage for any type of data, typically used for frequently accessed data
 First 50 TB / Month $0.025 per GB
 Next 450 TB / Month $0.024 per GB
@@ -49,8 +51,8 @@ All Storage / Month $0.01104 per GB
 
 \*\*\* For each object that is stored in the S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive storage classes, AWS charges for 40 KB of additional metadata for each archived object, with 8 KB charged at S3 Standard rates and 32 KB charged at S3 Glacier Flexible Retrieval or S3 Deep Archive rates. This allows you to get a real-time list of all of your S3 objects using the S3 LIST API or the S3 Inventory report. S3 Glacier Instant Retrieval has a minimum billable object size of 128 KB. Smaller objects may be stored but will be charged for 128 KB of storage at the appropriate storage class rate. Objects that are archived to S3 Glacier Instant Retrieval and S3 Glacier Flexible Retrieval are charged for a minimum storage duration of 90 days, and S3 Glacier Deep Archive has a minimum storage duration of 180 days. Objects deleted prior to the minimum storage duration incur a pro-rated charge equal to the storage charge for the remaining days. Objects that are deleted, overwritten, or transitioned to a different storage class before the minimum storage duration will incur the normal storage usage charge plus a pro-rated storage charge for the remainder of the minimum storage duration. Objects stored longer than the minimum storage duration will not incur a minimum storage charge. For customers using the S3 Glacier direct API, pricing for API can be found on the S3 Glacier API pricing page.
 
-Requests & data retrievals
-You pay for requests made against your S3 buckets and objects. S3 request costs are based on the request type, and are charged on the quantity of requests as listed in the table below. When you use the Amazon S3 console to browse your storage, you incur charges for GET, LIST, and other requests that are made to facilitate browsing. Charges are accrued at the same rate as requests that are made using the API/SDK. Reference the S3 developer guide for technical details on the following request types: PUT, COPY, POST, LIST, GET, SELECT, Lifecycle Transition, and Data Retrievals. DELETE and CANCEL requests are free. LIST requests for any storage class are charged at the same rate as S3 Standard PUT, COPY, and POST requests. You pay for retrievals when you GET an object stored in the S3 Standard – Infrequent Access, S3 One Zone – Infrequent Access, or S3 Glacier Instant Retrieval storage classes. When you restore an archive from the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive storage classes, you pay for retrievals as a part of the restore request. When you restore an archive, you are paying for both the archive (charged at the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive rate) and a copy, accessible with GET using the same object key, that you restored temporarily (charged at the S3 Standard storage rate for a duration of time you choose). Reference the S3 developer guide for technical details on Data Retrievals.
+## Requests & data retrievals
+You pay for requests made against your S3 buckets and objects. S3 request costs are based on the request type, and are charged on the quantity of requests as listed in the table below. When you use the Amazon S3 console to browse your storage, you incur charges for GET, LIST, and other requests that are made to facilitate browsing. Charges are accrued at the same rate as requests that are made using the API/SDK. Reference the S3 developer guide for technical details on the following request types: PUT, COPY, POST, LIST, GET, SELECT, Lifecycle Transition, and Data Retrievals. DELETE and CANCEL requests are free. LIST requests for any storage class are charged at the same rate as S3 Standard PUT, COPY, and POST requests. You pay for retrievals when you GET an object stored in the S3 Standard - Infrequent Access, S3 One Zone - Infrequent Access, or S3 Glacier Instant Retrieval storage classes. When you restore an archive from the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive storage classes, you pay for retrievals as a part of the restore request. When you restore an archive, you are paying for both the archive (charged at the S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive rate) and a copy, accessible with GET using the same object key, that you restored temporarily (charged at the S3 Standard storage rate for a duration of time you choose). Reference the S3 developer guide for technical details on Data Retrievals.
 
 S3 Lifecycle Transition request pricing below represents requests to that storage class. For example, transitioning data from S3 Standard to S3 Standard-Infrequent Access will be charged $0.01 per 1,000 requests.
 
@@ -125,17 +127,17 @@ Archive Instant Access n/a n/a
 S3 Tables monitoring pricing
 Monitoring, All Storage / Month $0.025 per 1,000 objects
 S3 Tables maintenance pricing
-Compaction - Objects† $0.0022 per 1,000 objects processed
+Compaction - Objects* $0.0022 per 1,000 objects processed
 Compaction - Data Processed with Binpack (Default) $0.005 per GB processed
 Compaction - Data Processed with Sort or Z-order $0.01 per GB processed
-† Compaction charges are incurred when objects stored in your table buckets are processed for automatic compaction. These charges will not be incurred if you disable automatic compaction in a specified table in your S3 table bucket.
+* Compaction charges are incurred when objects stored in your table buckets are processed for automatic compaction. These charges will not be incurred if you disable automatic compaction in a specified table in your S3 table bucket.
 
 S3 Tables replication pricing
 For S3 Tables replication, you pay the S3 Tables charges for storage in the destination table, for replication PUT requests, for table updates (commits), and for object monitoring on the replicated data. For cross-Region table replication, you also pay for inter-Region Data Transfer OUT from S3 to the destination Region based on the Region pair.
 
 Table updates replicated $0.01 per 1,000 table updates replicated
 S3 Tables pricing example:
-You use a daily ETL job to pre-process data from different structured and unstructured sources and update an Apache Iceberg table stored in the S3 Standard storage class in your table bucket once a day. This update creates 1,000 new data files with an average object size of 5 MB and 3 metadata files with an average object size of 10 KB. Your table’s users frequently perform queries on your dataset and generate 500,000 GET requests per month. You do not have a sort order defined for your table. To optimize query performance, you enable automatic compaction on S3 Tables. At the end of the month, your table is 1 TB in size with an average object size of 100 MB. This example uses the US-West (Oregon) AWS Region.
+You use a daily ETL job to pre-process data from different structured and unstructured sources and update an Apache Iceberg table stored in the S3 Standard storage class in your table bucket once a day. This update creates 1,000 new data files with an average object size of 5 MB and 3 metadata files with an average object size of 10 KB. Your table's users frequently perform queries on your dataset and generate 500,000 GET requests per month. You do not have a sort order defined for your table. To optimize query performance, you enable automatic compaction on S3 Tables. At the end of the month, your table is 1 TB in size with an average object size of 100 MB. This example uses the US-West (Oregon) AWS Region.
 
 Your charges would be calculated as follows:
 
@@ -218,7 +220,7 @@ Total storage is the sum of logical storage across your indexes, where the size 
 3. Key: Each vector is associated with a key. Keys require 1 byte of storage per character.
 
 Query cost
-Query charges include a per API charge in addition to a $/TB charge based on the average vector size, including vector data, key, and filterable metadata, multiplied by the number of vectors in the index you’re querying. As your vector index grows, data processing charges for query increase proportionally; however, at larger scale, you benefit from lower $/TB pricing above 100K in your vector index.
+Query charges include a per API charge in addition to a $/TB charge based on the average vector size, including vector data, key, and filterable metadata, multiplied by the number of vectors in the index you're querying. As your vector index grows, data processing charges for query increase proportionally; however, at larger scale, you benefit from lower $/TB pricing above 100K in your vector index.
 
 Vector pricing
 Region:
@@ -228,17 +230,17 @@ S3 Vectors storage pricing
 S3 Vector Storage /Month - monthly logical storage of vector data, key, and metadata $0.064 per GB
 S3 Vectors request pricing
 
-PUT requests (per GB)¹ GET, LIST and all other requests (per 1,000 requests)
+PUT requests (per GB)1 GET, LIST and all other requests (per 1,000 requests)
 S3 Vectors Requests $0.214 per GB $0.059
 [1] PUT is subject to a minimum charge of 128KB per PUT. To lower PUT costs, you can batch multiple vectors per PUT request.
 
 S3 Vectors query pricing
 
 S3 Vectors query requests (per 1,000 requests) $0.0027
-S3 Vector data² - sum of vectors per index multiplied by average vector size (vector data, key, and filterable metadata)
+S3 Vector data2 - sum of vectors per index multiplied by average vector size (vector data, key, and filterable metadata)
 First 100 thousand vectors $0.0043 per TB
 Over 100 thousand vectors $0.0021 per TB
-[2] Note that it can take up to a day for the storage used by overwritten or deleted vectors to be reclaimed. These vectors are removed from query results immediately, but will continue to be included in the index’s storage size during this time. As a result, workloads that frequently overwrite or delete the same keys can temporarily see higher query costs.
+[2] Note that it can take up to a day for the storage used by overwritten or deleted vectors to be reclaimed. These vectors are removed from query results immediately, but will continue to be included in the index's storage size during this time. As a result, workloads that frequently overwrite or delete the same keys can temporarily see higher query costs.
 
 Pricing example 1:
 You are building a RAG workflow to provide accurate and relevant text responses to customers. You have 10 million vectors, each consisting of 4 KB vector data, 1 KB of filterable metadata, 1 KB of non-filterable metadata, and a key (0.17 KB each), totaling 6.17KB per vector. The 10 million vectors are split into 40 indexes for each of your customers, consisting of 250,000 vectors each. You update the vectors in your vector index every six months, removing old vectors and uploading new ones. This results in PUT of ~16.7% of your data per month. This example uses pricing for the US East (N. Virginia) AWS Region.
@@ -292,7 +294,7 @@ Data transferred between S3 buckets in the same AWS Region.
 Data transferred from an Amazon S3 bucket to any AWS service(s) within the same AWS Region as the S3 bucket (including to a different account in the same AWS Region).
 Data transferred out to Amazon CloudFront (CloudFront).
 EU customers may request reduced data transfer rates for eligible use cases under the European Data Act. Please contact AWS Customer Support for more information.
-The pricing below is based on data transferred "in" and "out" of Amazon S3 (over the public internet)†††. Learn more about AWS Direct Connect pricing.
+The pricing below is based on data transferred "in" and "out" of Amazon S3 (over the public internet)***. Learn more about AWS Direct Connect pricing.
 
 For Data Transfers exceeding 500 TB/Month, please contact us.
 Region:
@@ -523,7 +525,7 @@ Storage and bandwidth size includes all file overhead.
 
 Rate tiers take into account your aggregate usage for Data Transfer Out to the Internet across all AWS services.
 
-††† Data Transfer Out may be different from the data received by your application in case the connection is prematurely terminated by you, for example, if you make a request for a 10 GB object and terminate the connection after receiving the first 2 GB of data. Amazon S3 attempts to stop the streaming of data, but it does not happen instantaneously. In this example, the Data Transfer Out may be 3 GB (1 GB more than 2 GB you received). As a result, you will be billed for 3 GB of Data Transfer Out.
+*** Data Transfer Out may be different from the data received by your application in case the connection is prematurely terminated by you, for example, if you make a request for a 10 GB object and terminate the connection after receiving the first 2 GB of data. Amazon S3 attempts to stop the streaming of data, but it does not happen instantaneously. In this example, the Data Transfer Out may be 3 GB (1 GB more than 2 GB you received). As a result, you will be billed for 3 GB of Data Transfer Out.
 
 S3 Pricing Details
 Except as otherwise noted, our prices are exclusive of applicable taxes and duties, including VAT and applicable sales tax. For customers with a Japanese billing address, use of AWS is subject to Japanese Consumption Tax. To learn more, visit our consumption tax FAQs.
@@ -543,13 +545,13 @@ Region:
 Middle East (UAE)
 Server-side encryption with Amazon S3 managed keys (SSE-S3) Free
 Server-side encryption with customer provided keys (SSE-C) Free
-Server-side encryption with keys stored in AWS Key Management Service (SSE-KMS) Free†
-Dual-layer server-side encryption with keys stored in AWS Key Management Service (DSSE-KMS) $0.003 per gigabyte ††
+Server-side encryption with keys stored in AWS Key Management Service (SSE-KMS) Free*
+Dual-layer server-side encryption with keys stored in AWS Key Management Service (DSSE-KMS) $0.003 per gigabyte **
 Amazon S3 automatically applies server-side encryption with Amazon S3 managed keys (SSE-S3) as a base layer of encryption to all new objects added to S3, at no additional cost and with no impact on performance. SSE-C also does not incur any additional S3 charges.
 
-† For SSE-KMS, you pay AWS KMS charges to generate or retrieve the data key used for encryption and decryption. For pricing on AWS KMS, visit the AWS KMS pricing page. You can also optimize your SSE-KMS costs with Amazon S3 Bucket Keys.
+* For SSE-KMS, you pay AWS KMS charges to generate or retrieve the data key used for encryption and decryption. For pricing on AWS KMS, visit the AWS KMS pricing page. You can also optimize your SSE-KMS costs with Amazon S3 Bucket Keys.
 
-†† For DSSE-KMS, in addition to the charges for AWS KMS mentioned above, you pay an additional per gigabyte encryption fee for the second layer of encryption and decryption of data.
+** For DSSE-KMS, in addition to the charges for AWS KMS mentioned above, you pay an additional per gigabyte encryption fee for the second layer of encryption and decryption of data.
 
 S3 bucket types
 Amazon S3 supports four different bucket types: general purpose buckets, directory buckets, and table buckets, and vector buckets. S3 general purpose buckets are available in all AWS Regions. For Regional availability details, visit the S3 User Guide for directory buckets, table buckets, and vector buckets.
@@ -581,20 +583,20 @@ S3 Access Grants is priced on a per-request basis. You are charged a flat rate f
 
 S3 Access Grants Requests (per 1,000 requests) $0.03
 
-You pay for the storage management features and analytics (Amazon S3 Metadata, Amazon S3 Inventory, Amazon S3 Storage Class Analysis, Amazon S3 Storage Lens, and Amazon S3 Object Tagging) that are enabled on your account’s buckets. S3 storage management and analytics are priced per feature as detailed in the following table. For pricing on Amazon CloudWatch metrics, visit the Amazon CloudWatch pricing page. For pricing on S3 data events in AWS CloudTrail, visit the AWS CloudTrail pricing page.
+You pay for the storage management features and analytics (Amazon S3 Metadata, Amazon S3 Inventory, Amazon S3 Storage Class Analysis, Amazon S3 Storage Lens, and Amazon S3 Object Tagging) that are enabled on your account's buckets. S3 storage management and analytics are priced per feature as detailed in the following table. For pricing on Amazon CloudWatch metrics, visit the Amazon CloudWatch pricing page. For pricing on S3 data events in AWS CloudTrail, visit the AWS CloudTrail pricing page.
 
-Storage management
+## Storage management
 S3 Metadata pricing
 Amazon S3 Metadata delivers queryable object metadata in near real time to organize your data and accelerate data discovery. This helps you to curate, identify, and use your Amazon S3 data for business analytics, real-time inference applications, and more.
 
 Region:
 
 Middle East (UAE)
-S3 Metadata journal tables $0.30 per million updates ††
-S3 Metadata live inventory tables $0.10 per million objects per month †††(one-time backfill fee applies)
-†† Updates include new object uploads, changes to object metadata, and object deletes for journal tables. Updates also include one-time backfill of all objects for live inventory tables. Additional charges for Amazon S3 Tables will apply.
+S3 Metadata journal tables $0.30 per million updates **
+S3 Metadata live inventory tables $0.10 per million objects per month ***(one-time backfill fee applies)
+** Updates include new object uploads, changes to object metadata, and object deletes for journal tables. Updates also include one-time backfill of all objects for live inventory tables. Additional charges for Amazon S3 Tables will apply.
 
-††† Monthly fee applicable only for buckets with greater than 1 billion objects.
+*** Monthly fee applicable only for buckets with greater than 1 billion objects.
 
 S3 Metadata pricing example:
 You upload 1,000,000 new images every month in a general purpose S3 bucket with an existing 200,000,000 objects that have S3 Metadata journal and live inventory table configuration enabled. You want to determine the total price for enabling the live inventory table, to generate your latest list of objects and metadata, and enabling the journal table to track the changes into your bucket. This example uses the US West (Oregon) Region.
@@ -606,12 +608,12 @@ S3 Metadata price for journal tables is $0.30 per million updates
 Since you are providing 1,000,000 updates, your charges would be:
 S3 Metadata charge: 1,000,000 \* $0.30/1,000,000 = $0.30
 
-S3 Metadata live inventory table ($/million updates) – one time backfill charge
+S3 Metadata live inventory table ($/million updates) - one time backfill charge
 S3 Metadata price for one-time backfill of existing objects is $0.30 per million updates
 Since you have existing 200,000,000 objects, your charges would be:
 S3 Metadata charge: 200,000,000 \* $0.30/1,000,000 = $60.00
 
-S3 Metadata live inventory table ($/million objects) – monthly charge
+S3 Metadata live inventory table ($/million objects) - monthly charge
 S3 Metadata live inventory price is $0.10 per million objects per month for buckets with objects greater than 1 billion. For buckets with fewer than 1 billion objects, there is no monthly cost for keeping your live inventory table up to date.
 Since your general purpose S3 bucket has fewer than 1 billion objects, there is no monthly cost for keeping your live inventory table up to date.
 
@@ -627,18 +629,18 @@ S3 Inventory & S3 Object Tagging pricing
 Region:
 
 Middle East (UAE)
-S3 Inventory†† $0.0028 per million objects listed
+S3 Inventory** $0.0028 per million objects listed
 S3 Object Tagging $0.0065 per 10,000 tags per month
-†† The files produced by S3 Inventory exports are stored in your specified S3 bucket, and are subject to S3 Standard storage charges.
+** The files produced by S3 Inventory exports are stored in your specified S3 bucket, and are subject to S3 Standard storage charges.
 
 S3 Batch Operations pricing
 Region:
 
 Middle East (UAE)
-Batch Operations – Jobs $0.25 per job
-Batch Operations – Objects $1.00 per million objects processed
-Batch Operations – Manifest (optional) $0.015 per 1 million objects in the source bucket
-†† You are charged for S3 Batch Operations jobs, objects, manifests, and requests in addition to any charges associated with the operation that S3 Batch Operations performs on your behalf, including data transfer, requests, and other charges.
+Batch Operations - Jobs $0.25 per job
+Batch Operations - Objects $1.00 per million objects processed
+Batch Operations - Manifest (optional) $0.015 per 1 million objects in the source bucket
+** You are charged for S3 Batch Operations jobs, objects, manifests, and requests in addition to any charges associated with the operation that S3 Batch Operations performs on your behalf, including data transfer, requests, and other charges.
 
 When S3 Batch Operations generates a manifest, you are charged for an S3 Batch Operations manifest containing a list of objects for Batch Operations to operate on.
 
@@ -680,20 +682,20 @@ Region:
 
 Middle East (UAE)
 S3 Storage Lens free metrics $0.00
-S3 Storage Lens advanced metrics and recommendations†
+S3 Storage Lens advanced metrics and recommendations*
 Up to 25B objects monitored $0.20 per million objects monitored per month
 Greater than 25B to 100B objects monitored $0.16 per million objects monitored per month
 Greater than 100B objects monitored $0.12 per million objects monitored per month
-† For S3 Storage Lens advanced metrics and recommendations, you will be charged object monitoring charges for each Storage Lens dashboard used. The Storage Lens advanced metrics and recommendations pricing includes 15-months data retention, 35 additional metrics across 4 categories (activity, advanced cost optimization, advanced data protection, and detailed status code metrics), prefix-level aggregation, and CloudWatch metrics support.
+* For S3 Storage Lens advanced metrics and recommendations, you will be charged object monitoring charges for each Storage Lens dashboard used. The Storage Lens advanced metrics and recommendations pricing includes 15-months data retention, 35 additional metrics across 4 categories (activity, advanced cost optimization, advanced data protection, and detailed status code metrics), prefix-level aggregation, and CloudWatch metrics support.
 
 S3 Storage Class Analysis pricing
 Region:
 
 Middle East (UAE)
-S3 Analytics Storage Class Analysis†† $0.10 per million objects monitored per month
-†† The files produced by S3 Storage Class Analysis exports are stored in your specified S3 bucket, and are subject to S3 Standard storage charges.
+S3 Analytics Storage Class Analysis** $0.10 per million objects monitored per month
+** The files produced by S3 Storage Class Analysis exports are stored in your specified S3 bucket, and are subject to S3 Standard storage charges.
 
-Except as otherwise noted, our prices are exclusive of applicable taxes and duties, including VAT and applicable sales tax. For customers with a Japanese billing address, use of AWS is subject to Japanese Consumption Tax. To learn more, visit our consumption tax FAQs »
+Except as otherwise noted, our prices are exclusive of applicable taxes and duties, including VAT and applicable sales tax. For customers with a Japanese billing address, use of AWS is subject to Japanese Consumption Tax. To learn more, visit our consumption tax FAQs
 
 Amazon S3 storage usage is calculated in binary gigabytes (GB), where 1 GB is 230 bytes. This unit of measurement is also known as a gibibyte (GiB), defined by the International Electrotechnical Commission (IEC). Similarly, 1 TB is 240 bytes, i.e. 1024 GBs.
 
@@ -704,8 +706,8 @@ For Cross-Region Replication (CRR) and Same-Region Replication (SRR), you pay th
 
 Storage and PUT request pricing for the replicated copy is based on the selected destination AWS Regions, while pricing for inter-region data transfers is based on the source AWS Region. For more details on replication pricing, read the pricing FAQs.
 
-S3 Replication Time Control data transfer† $0.015 per GB
-† Amazon S3 Replication Time Control Data Transfer pricing is the same in all AWS Regions. Replication Time Control is available in all commercial AWS Regions, including the AWS China (Beijing) Region and the AWS China (Ningxia) Region, but not in the AWS GovCloud (US) Regions.
+S3 Replication Time Control data transfer* $0.015 per GB
+* Amazon S3 Replication Time Control Data Transfer pricing is the same in all AWS Regions. Replication Time Control is available in all commercial AWS Regions, including the AWS China (Beijing) Region and the AWS China (Ningxia) Region, but not in the AWS GovCloud (US) Regions.
 
 S3 Batch Replication
 While live replication like CRR and SRR automatically replicates newly uploaded objects as they are written to your bucket, S3 Batch Replication allows you to replicate existing objects. S3 Batch Replication is built using S3 Batch Operations to replicate objects as fully managed Batch Operations jobs. Similar to SRR and CRR, you pay the S3 charges for storage in the selected destination S3 storage classes, for the primary copy, for replication PUT requests, and for applicable infrequent access storage retrieval charges. When replicating across AWS Regions, you also pay for inter-Region Data Transfer OUT from S3 to each destination Region. If an object already exists in the destination bucket, we will check if the destination object is in sync with the source object. If the metadata is not in sync and needs to be replicated, you will incur the replication PUT request charge but not the inter-Region Data Transfer OUT charge. If the metadata is in sync, Batch Replication will do nothing and you incur no charge. For more details on replication pricing, read the pricing FAQs.
@@ -717,9 +719,9 @@ Finally, when replicating existing objects, you need to indicate what objects to
 Region:
 
 Middle East (UAE)
-Batch Operations – Jobs $0.25 per job
-Batch Operations – Objects $1.00 per million objects processed
-Batch Operations – Manifest (optional) $0.015 per 1 million objects in the source bucket
+Batch Operations - Jobs $0.25 per job
+Batch Operations - Objects $1.00 per million objects processed
+Batch Operations - Manifest (optional) $0.015 per 1 million objects in the source bucket
 Note: For S3 Tables replication pricing, refer to the Tables tab.
 
 S3 Object Lambda pricing
