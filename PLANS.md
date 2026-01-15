@@ -3,7 +3,7 @@
 ## 0) Goals and scope
 
 - Goal: Let developers ask questions about AWS resources (what they are, how to configure/use them, limits, errors, examples) and get accurate, source-cited answers.
-- Scope (initial): 3 services for local MVP (S3, IAM, Lambda).
+- Scope (initial): 3 services for local MVP (S3, EC2, Lambda).
 - Out-of-scope (for now): Billing/account governance, niche services, per-account introspection unless a live AWS tool is added.
 
 ## 1) Architecture shape
